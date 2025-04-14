@@ -1,0 +1,48 @@
+{
+  "name": "equestrian-website",
+  "version": "1.0.0",
+  "description": "## Table of Contents 1. [Introduction](#introduction) 2. [Architectural Overview](#architectural-overview) 3. [Technology Stack](#technology-stack) 4. [Development Approach](#development-approach) 5. [Microservices Architecture](#microservices-architecture) 6. [CI/CD Pipeline Implementation](#cicd-pipeline-implementation) 7. [Database Design Considerations](#database-design-considerations) 8. [Security Considerations](#security-considerations) 9. [Scaling Strategy](#scaling-strategy) 10. [Development Roadmap](#development-roadmap) 11. [Frontend Component Design](#frontend-component-design) 12. [Microservice Implementation Details](#microservice-implementation-details) 13. [Database Optimization for Equestrian Data](#database-optimization-for-equestrian-data) 14. [Infrastructure Setup](#infrastructure-setup) 15. [Securing Marketplace Transactions](#securing-marketplace-transactions) 16. [SEO Optimization for Marketplace Listings](#seo-optimization-for-marketplace-listings)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss}\"",
+    "format-check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,css,scss}\"",
+    "dev:frontend": "node src/index.js",
+    "dev:backend": "node src/index.js",
+    "docker:lint": "docker-compose exec api npm run lint",
+    "docker:format": "docker-compose exec api npm run format"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.24.0",
+    "eslint": "^9.24.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-prettier": "^5.2.6",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^16.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.1",
+    "prettier": "^3.5.3",
+    "typescript-eslint": "^8.29.1"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "react":"^18.2.0"
+  },
+  "lint-stages": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,css,md}": [
+      "prettier --write"
+    ]
+  }
+}

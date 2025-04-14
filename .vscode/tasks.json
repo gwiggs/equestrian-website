@@ -1,0 +1,35 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Start Development Environment",
+        "type": "shell",
+        "command": "docker-compose up -d",
+        "problemMatcher": []
+      },
+      {
+        "label": "Stop Development Environment",
+        "type": "shell",
+        "command": "docker-compose down",
+        "problemMatcher": []
+      },
+      {
+        "label": "Rebuild Services",
+        "type": "shell",
+        "command": "docker-compose up -d --build",
+        "problemMatcher": []
+      },
+      {
+        "label": "Backend: Run Tests",
+        "type": "shell",
+        "command": "docker-compose exec api npm test",
+        "problemMatcher": []
+      },
+      {
+        "label": "Database: Run Migrations",
+        "type": "shell",
+        "command": "docker-compose exec api npm run migrate",
+        "problemMatcher": []
+      }
+    ]
+  }

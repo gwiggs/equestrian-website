@@ -1,0 +1,43 @@
+# docker-compose.yml
+version: "3.8"
+
+services:
+  api:
+    build: 
+      context: .
+      dockerfile: ./backend/Dockerfile.dev
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./backend:/app/src
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/equestrian
+    depends_on:
+      - postgres
+  
+  frontend:
+    build:
+      context: .
+      dockerfile: ./frontend/Dockerfile.dev
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./frontend:/app/src
+      - /app/node_modules
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:3000
+  
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=equestrian
+
+volumes:
+  postgres_data:

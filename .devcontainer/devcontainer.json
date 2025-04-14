@@ -1,0 +1,7 @@
+{
+    "name": "Equestrian Marketplace Development",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "api",
+    "workspaceFolder": "/app",
+    "remoteUser": "node"
+  }
