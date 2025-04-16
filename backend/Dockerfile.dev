@@ -2,15 +2,16 @@ FROM node:18-alpine
 
 WORKDIR /app
 
+# Install nodemon globally
+RUN npm install -g nodemon
+
 # Install dependencies first (leverages Docker cache)
-COPY package.json ./
-RUN npm install
+COPY backend/package.json ./backend/
+RUN cd backend && npm install
 
 COPY . .
-
+WORKDIR /app/backend
 # No need to copy source code - will be mounted
 EXPOSE 3000
 
-# CMD ["npm", "run", "dev"]
-# CMD ["npm", "run", "dev:backend"]
-CMD ["node", "/app/backend/src/index.js"]
+CMD ["npm", "run", "dev"]
